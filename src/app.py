@@ -15,6 +15,8 @@ def carregar_dados():
     return df
 
 df_vendas = carregar_dados()
+# Corrigindo o erro de digitação no nome do produto
+df_vendas['Nome_Produto'] = df_vendas['Nome_Produto'].str.replace('Hextombe', 'Hexatombe')
 
 # --- FILTROS DINÂMICOS (Exigência da Sprint 3) ---
 st.sidebar.header("Filtros Dinâmicos")
@@ -54,11 +56,13 @@ with col_grafico1:
     st.subheader("Série Temporal (Sazonalidade)")
     df_filtrado['Mes'] = df_filtrado['Data_Venda'].dt.to_period('M').astype(str)
     df_mes = df_filtrado.groupby('Mes')['Valor_Total'].sum().reset_index()
-    fig_linha = px.line(df_mes, x='Mes', y='Valor_Total', markers=True)
+    fig_linha = px.area(df_mes, x='Mes', y='Valor_Total', markers=True,
+                    color_discrete_sequence=['#FFCDB2'])
     st.plotly_chart(fig_linha, use_container_width=True)
 
 with col_grafico2:
     st.subheader("Faturamento por Produto")
     df_prod = df_filtrado.groupby('Nome_Produto')['Valor_Total'].sum().reset_index().sort_values('Valor_Total', ascending=True)
-    fig_bar = px.bar(df_prod, x='Valor_Total', y='Nome_Produto', orientation='h')
+    fig_bar = px.bar(df_prod, x='Valor_Total', y='Nome_Produto', orientation='h',
+                 color_discrete_sequence=['#FFCDB2'])
     st.plotly_chart(fig_bar, use_container_width=True)
