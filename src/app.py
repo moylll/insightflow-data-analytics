@@ -4,7 +4,7 @@ import sqlite3
 import plotly.express as px
 
 st.set_page_config(page_title="Dashboard InsightFlow", layout="wide")
-st.title("📊 Dashboard de Vendas - InsightFlow")
+st.title("Dashboard de Vendas - InsightFlow")
 
 @st.cache_data
 def carregar_dados():
@@ -18,18 +18,18 @@ df_vendas = carregar_dados()
 # Corrigindo o erro de digitação no nome do produto
 df_vendas['Nome_Produto'] = df_vendas['Nome_Produto'].str.replace('Hextombe', 'Hexatombe')
 
-# --- FILTROS DINÂMICOS (Exigência da Sprint 3) ---
+# Filtros dinâmicos - Sprint 3
 st.sidebar.header("Filtros Dinâmicos")
 categorias = ["Todas"] + list(df_vendas['Categoria_Produto'].unique())
 categoria_selecionada = st.sidebar.selectbox("Selecione a Categoria", categorias)
 
-# Aplicando o filtro
+# Aplicação
 if categoria_selecionada != "Todas":
     df_filtrado = df_vendas[df_vendas['Categoria_Produto'] == categoria_selecionada]
 else:
     df_filtrado = df_vendas
 
-# --- KPIs (Exigência da Sprint 3) ---
+# KPIs - Sprint 3
 st.subheader("Indicadores Principais (KPIs)")
 col1, col2, col3 = st.columns(3)
 
@@ -49,7 +49,7 @@ col3.metric("Taxa de Retenção", f"{taxa_retencao:.1f}%")
 
 st.divider()
 
-# --- GRÁFICOS INTERATIVOS ---
+# Inserção dos gráficos interativos
 col_grafico1, col_grafico2 = st.columns(2)
 
 with col_grafico1:
