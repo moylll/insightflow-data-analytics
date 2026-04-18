@@ -6,7 +6,7 @@ import os
 def gerar_graficos():
     print("Gerando gráficos da Sprint 3...")
 
-    # 1. Conecta ao banco de dados (Caminho corrigido!)
+    # Conexão ao banco de dados (Caminho corrigido!)
     conexao = sqlite3.connect('data/processed/ecommerce.db')
     df_vendas = pd.read_sql_query("SELECT * FROM vendas", conexao)
     df_vendas['Data_Venda'] = pd.to_datetime(df_vendas['Data_Venda'])
@@ -15,7 +15,7 @@ def gerar_graficos():
     # Cria uma pasta para salvar as imagens (Caminho corrigido!)
     os.makedirs('data/processed/graficos', exist_ok=True)
 
-    # 2. Gráfico 1: Receita por Categoria
+    # Gráfico 1: Receita por Categoria
     df_categoria = df_vendas.groupby('Categoria_Produto')['Valor_Total'].sum().sort_values()
     
     plt.figure(figsize=(10, 6))
@@ -28,7 +28,7 @@ def gerar_graficos():
     plt.close()
     print("Gráfico de categorias salvo com sucesso!")
 
-    # 3. Gráfico 2: Tendência de Vendas Mensal
+    # Gráfico 2: Tendência de Vendas Mensal
     df_vendas['Mes'] = df_vendas['Data_Venda'].dt.to_period('M')
     df_mes = df_vendas.groupby('Mes')['Valor_Total'].sum()
     

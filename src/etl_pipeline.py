@@ -25,7 +25,7 @@ def executar_etl():
     df['Valor_Unitario'] = pd.to_numeric(df['Valor_Unitario'])
     df['Quantidade'] = pd.to_numeric(df['Quantidade'])
     
-    # BÔNUS: Criando a coluna de Valor Total (Preço x Quantidade) para ajudar na Análise
+    # Criando a coluna de Valor Total (Preço x Quantidade) para ajudar na Análise
     df['Valor_Total'] = df['Valor_Unitario'] * df['Quantidade']
 
     print(f"Dados limpos e padronizados! Linhas finais: {len(df)}")

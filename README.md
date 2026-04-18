@@ -25,3 +25,30 @@ Durante a análise dos dados e a construção do dashboard, foi possível identi
 * `data/`: Armazena o banco de dados final processado e as imagens dos gráficos estáticos gerados durante a análise.
 * `notebooks/`: Contém os arquivos do Jupyter com as análises exploratórias (EDA) detalhadas passo a passo.
 * `src/`: Reúne os scripts em Python responsáveis pela extração dos dados, pelo dashboard web e pelo modelo preditivo.
+
+## Como executar o projeto localmente
+
+1. Clone o repositório localmente e entre na pasta
+
+```bash
+git clone [https://github.com/moylll/insightflow-data-analytics.git](https://github.com/moylll/insightflow-data-analytics.git)
+cd insightflow-data-analytics
+```
+
+2. Crie e ative um ambiente virtual
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+3. Instale as dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Rode o app:)
+
+```bash
+streamlit run src/app.py
