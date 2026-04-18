@@ -31,7 +31,7 @@ Durante a análise dos dados e a construção do dashboard, foi possível identi
 1. Clone o repositório localmente e entre na pasta
 
 ```bash
-git clone [https://github.com/moylll/insightflow-data-analytics.git](https://github.com/moylll/insightflow-data-analytics.git)
+git clone https://github.com/moylll/insightflow-data-analytics.git
 cd insightflow-data-analytics
 ```
 
